@@ -1,13 +1,12 @@
 package it.kevinroberto.fantacalcapi.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import it.kevinroberto.fantacalcapi.util.Roles;
@@ -27,15 +26,13 @@ public class Players implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "idplayers")
 	private String idplayers;
 	private String name;
 	private String surname;
 	private String team;
 	private Long quote;
 	private Roles role;
-	
-	@OneToMany(mappedBy = "players")
-	private List<Buyers> buyers;
 
 	public Players(String name, String surname, String team, Long quote, Roles role) {
 		super();

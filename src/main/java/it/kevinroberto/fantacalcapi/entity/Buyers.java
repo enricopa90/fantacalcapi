@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -29,10 +28,8 @@ public class Buyers implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String idbuyers;
 
-	@ManyToOne
 	private String idplayers;
 
-	@ManyToOne
 	private String idowners;
 
 	private Long amount;

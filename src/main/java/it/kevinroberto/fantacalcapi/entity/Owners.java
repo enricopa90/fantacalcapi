@@ -1,13 +1,12 @@
 package it.kevinroberto.fantacalcapi.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -26,12 +25,11 @@ public class Owners implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="idowners")
 	private String idowners;
 	private String name;
 	private String team_name;
 	
-	@OneToMany(mappedBy = "owners")
-	private List<Buyers> buyers;
 
 	public Owners(String name, String team_name) {
 		super();
