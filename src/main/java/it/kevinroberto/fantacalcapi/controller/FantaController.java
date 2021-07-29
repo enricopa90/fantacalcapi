@@ -25,9 +25,9 @@ public class FantaController {
 
 	@GetMapping("/getPlayers")
 	@ResponseBody
-	public List<Players> getPlayers(@RequestParam String role, @RequestParam boolean shuffle) {
+	public List<Players> getPlayers(@RequestParam Roles role, @RequestParam boolean shuffle) {
 		log.info("GET method getPlayers with role {} - shuffle {}", role, shuffle);
-		List<Players> response = servicePlayers.findByRoles(Roles.valueOf(role));
+		List<Players> response = servicePlayers.findByRoles(role);
 		if (shuffle) {
 			Collections.shuffle(response);
 		}
