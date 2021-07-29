@@ -1,17 +1,18 @@
 package it.kevinroberto.fantacalcapi.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.kevinroberto.fantacalcapi.entity.Owners;
-import it.kevinroberto.fantacalcapi.service.ServiceOwners;
-import it.kevinroberto.fantacalcapi.util.ResultSubmit;
+import it.kevinroberto.fantacalcapi.entity.Players;
+import it.kevinroberto.fantacalcapi.service.ServicePlayers;
+import it.kevinroberto.fantacalcapi.util.Roles;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -20,24 +21,18 @@ import lombok.extern.slf4j.Slf4j;
 public class FantaController {
 
 	@Autowired
-	ServiceOwners serviceOwners;
+	private ServicePlayers servicePlayers;
 
-	@GetMapping("/getOwners")
+	@GetMapping("/getPlayers")
 	@ResponseBody
-	public List<Owners> getOwners() {
-		log.info("GET method getOwners");
-		List<Owners> response = serviceOwners.findAll();
-		log.info("GET method getOwners with response {}", response);
-		return response;
-	}
-
-	@PostMapping("/saveOwner")
-	public ResultSubmit saveOwner(String name, String team_name) {
-		log.info("POST method saveOwner with name {} - team_name {}", name, team_name);
-		if (serviceOwners.saveOwner(name, team_name)) {
-			return new ResultSubmit("OK");
+	public List<Players> getPlayers(@RequestParam String role, @RequestParam boolean shuffle) {
+		log.info("GET method getPlayers with role {} - shuffle {}", role, shuffle);
+		List<Players> response = servicePlayers.findByRoles(Roles.valueOf(role));
+		if (shuffle) {
+			Collections.shuffle(response);
 		}
-		return new ResultSubmit("KO");
+		log.info("GET method getPlayers with response {}", response);
+		return response;
 	}
 
 }
