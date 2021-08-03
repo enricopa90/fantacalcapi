@@ -21,7 +21,9 @@ public class ServicePlayers {
 	public List<Players> findByRoles(Roles role) {
 		log.info("ServicePlayers - call query findByRoles - role={}", role);
 		try {
-			return repositoryPlayers.findByRole(role.label);
+			List<Players> players = repositoryPlayers.findByRole(role.label);
+			log.info("Size Players for role {} - size {}", role, players != null ? players.size() : 0);
+			return players;
 		} catch (Exception ex) {
 			log.error(ExceptionUtils.getFullStackTrace(ex));
 			return null;
