@@ -678,7 +678,8 @@ INSERT INTO PLAYERS (name, surname, team, quote, role, ngoal, nassist, nyellowca
 ('Mehdi', 'LERIS', 'SAMPDORIA', 5, 'M', 0, 0, 0, 0);
 INSERT INTO PLAYERS (name, surname, team, quote, role, ngoal, nassist, nyellowcard, nredcard) VALUES
 ('Karol', 'LINETTY', 'TORINO', 11, 'M', 0, 0, 0, 0);
-
+INSERT INTO PLAYERS (name, surname, team, quote, role, ngoal, nassist, nyellowcard, nredcard) VALUES
+('Karol', 'LINETTY', 'TORINO', 11, 'M', 0, 0, 0, 0);
 LOBOTKA Stanislav NAPOLI C C 6
 LOCATELLI Manuel SASSUOLO C C 18
 LOPEZ Maxime SASSUOLO C C 13
